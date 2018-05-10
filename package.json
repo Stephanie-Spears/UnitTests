@@ -4,7 +4,9 @@
   "description": "'unit test tutorial for javascript'",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "test:watch": "mocha --watch ./test ./",
+    "test:watch:playerMethods": "mocha --watch ./test/player_test.js ./game_logic/player_methods.js"
   },
   "repository": {
     "type": "git",
