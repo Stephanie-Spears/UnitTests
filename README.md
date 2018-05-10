@@ -92,3 +92,12 @@ Mocha's representation of a test suite (the describe function) takes two paramet
 * To mark a test as “pending”, do not add a function as a second argument
 * You can also mark tests as "pending" by typing an x in front of the pending block, like xdescribe() or xit()
 * Adding an x in front of the describe() block marks all of the specs inside as "pending"
+
+* You can write custom `mocha --watch` commands whenever you plan on working on one particular file a lot
+* You can also save a general `--watch` command in your package.json to run your tests all the time
+
+`"scripts":  {
+   "test": "mocha",
+   "test:watch": "mocha --watch ./test ./"
+  }`
+* The first argument describes the tests you want to run: all the tests in the ./test directory. The second argument describes the files you want to watch for changes: all the files in the current directory ./. You must include a . at the start of your file path, or Mocha will get confused on which files you’re looking for
