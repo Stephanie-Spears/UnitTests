@@ -84,3 +84,11 @@ Mocha's representation of a test suite (the describe function) takes two paramet
 * Edge cases occur at an extreme (maximum or minimum) operating parameter
 * Predicting edge cases can be challenging
 
+* A good use of the --reporter flag is when you only want to see test failures
+* To show only the failing test errors, you can use mocha --reporter min
+ * mocha --reporter markdown will print the same test report we’re used to, but using markdown formatting
+* You can add a --reporter flag to your package.json -- file in your “test” command -- so that npm test will always use that reporter
+
+* To mark a test as “pending”, do not add a function as a second argument
+* You can also mark tests as "pending" by typing an x in front of the pending block, like xdescribe() or xit()
+* Adding an x in front of the describe() block marks all of the specs inside as "pending"
