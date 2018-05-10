@@ -83,3 +83,4 @@ Mocha's representation of a test suite (the describe function) takes two paramet
 * An edge case is a radical situation your function might end up in, but it isn’t how your function would normally work
 * Edge cases occur at an extreme (maximum or minimum) operating parameter
 * Predicting edge cases can be challenging
+

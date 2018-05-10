@@ -98,6 +98,7 @@ describe('PLAYER METHODS', function () {
 				placeShip(player, ship, coordinates);
 			};
 			expect(handler).to.throw(Error);
+			expect(handler).to.throw('You left out the direction! I need that for the maths!');
 		});
 	});
 });
