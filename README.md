@@ -74,3 +74,12 @@ Mocha's representation of a test suite (the describe function) takes two paramet
  * Mocha splits the setup process into two blocks: the stuff we set up before the entire series of tests, and the stuff we set up before each individual test
  * Mocha provides the hooks before(), after(), beforeEach(), and afterEach() to set up preconditions and clean up after your tests
  * beforeEach() works like before, only it will run the function before each spec, instead of just once at the start of the suite
+ 
+* Mocha provides a "teardown" phase to remove unwanted variables
+* If your tests change your development environment, like creating a pretend database, or start up a local server, you can use the teardown block to set your system back to where it started
+* Mocha's after() and afterEach() hooks work exactly like before() and beforeEach(), except that they happen after
+* If you find yourself depending heavily on the teardown phase, you should double-check that you’re testing the right kind of function
+
+* An edge case is a radical situation your function might end up in, but it isn’t how your function would normally work
+* Edge cases occur at an extreme (maximum or minimum) operating parameter
+* Predicting edge cases can be challenging
