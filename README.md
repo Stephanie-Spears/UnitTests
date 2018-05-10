@@ -34,3 +34,7 @@ Advantages of writing unit tests:
 1. They can be automated so they're easier to run and check
 2. Unit tests are isolated from our running code base, so they don't affect the performance or legibility of our code
 3. The output from unit tests is often easier to read and more informative than our manual debugging statements
+
+Video review
+* To have Mocha and Chai in your project, type `npm install --save-dev mocha chai`
+* The `--save-dev` flag means that these tools are just for development
