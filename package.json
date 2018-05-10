@@ -4,7 +4,7 @@
   "description": "'unit test tutorial for javascript'",
   "main": "index.js",
   "scripts": {
-    "test": "Mocha"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",

@@ -14,69 +14,90 @@ describe('PLAYER METHODS', function () {
 				]
 			};
 		});
+
+		it('shoud confirm valid for unoccupied locations in range', function () {
+			const location = [0, 0];
+			const actual = validateLocation(player, location);
+			expect(actual).to.be.ok;
+		});
+
+		it('should confirm INvalid for occupied locations in range', function () {
+			const location = [9, 9];
+			const actual = validateLocation(player, location);
+			expect(actual).to.be.false;
+		});
+
+		it('shoud confirm INvalid for UNoccupied locations OUT of range', function () {
+			const locationHigh = [10, 10];
+			const locationLow = [-1, -1];
+			expect(validateLocation(player, locationHigh)).to.be.false;
+			expect(validateLocation(player, locationLow)).to.be.false;
+		});
 	});
 
-	it('should confirm valid for unoccupied locations in range', function () {
-		const location = [0, 0];
-		const actual = validateLocation(player, location);
-		expect(actual).to.be.ok;
+	describe('validateLocations', function () {
+		const validateLocations = require('../game_logic/player_methods.js').validateLocations;
+		let player;
+
+		beforeEach(function () {
+			player = {
+				ships: [
+					{
+						locations: [[0, 0]]
+					}
+				]
+			};
+		});
+
+		it('should correctly report a list of unoccupied locations is valid', function () {
+			const locations = [[1, 1], [1, 2], [1, 3], [1, 4]];
+			expect(validateLocations(player, locations)).to.be.ok;
+		});
+
+		it('should correctly report a a problem if any location in the list is invalid', function () {
+			let locations = [[1, 1], [1, 2], [1, 3], [10, 10]];
+			expect(validateLocations(player, locations)).to.be.false;
+			locations = [[1, 1], [1, 2], [1, 3], [0, 0]];
+			expect(validateLocations(player, locations)).to.be.false;
+		});
 	});
 
-	it('should confirm INvalid for occupied locations in range', function () {
-		const location = [9, 9];
-		const actual = validateLocation(player, location);
-		expect(actual).to.be.false;
-	});
+	describe('placeShip', function () {
+		const placeShip = require('../game_logic/player_methods.js').placeShip;
+		let player;
 
-	it('should confirm INvalid for UNoccupied locations OUT of range', function () {
-		const locationHigh = [10, 10];
-		const locationLow = [-1, -1];
-		expect(validateLocation(player, locationHigh)).to.be.false;
-		expect(validateLocation(player, locationLow)).to.be.false;
-	});
-});
+		beforeEach(function () {
+			player = {
+				ships: [
+					{
+						size: 1,
+						locations: []
+					},
+					{
+						size: 2,
+						locations: [[1, 0], [1, 1]]
+					}
+				]
+			};
+		});
 
-describe('validateLocations', function () {
-	const validateLocations = require('../game_logic/player_methods.js').validateLocations;
-	let player;
+		it('should update a ship with a valid starting location', function () {
+			const ship = player.ships[0];
+			const coordinates = [0, 1];
+			placeShip(player, ship, coordinates, 'horizontal');
+			const actual = ship.locations;
+			expect(actual).to.be.ok;
+			expect(actual).to.have.length(1);
+			expect(actual[0]).to.deep.equal([0, 1]);
+		});
 
-	beforeEach(function () {
-		player = {
-			ships: [
-				{
-					locations: [[0, 0]]
-				}
-			]
-		};
-	});
-
-	it('should correctly report a list of unoccupied locations is valid', function () {
-		const locations = [[1, 1], [1, 2], [1, 3], [1, 4]];
-		expect(validateLocations(player, locations)).to.be.ok;
-	});
-
-	it('should correctly report a problem if any location in the list is invalid', function () {
-		const locations = [[1, 1], [1, 2], [1, 3], [0, 0]];
-		expect(validateLocations(player, locations)).to.be.false;
-	});
-});
-
-describe('placeShip', function () {
-	const placeShip = require('../game_logic/player_methods.js').placeShip;
-	let player;
-
-	beforeEach(function () {
-		player = {
-			ships: [
-				{
-					size: 1,
-					locations: []
-				},
-				{
-					size: 2,
-					locations: [[1, 0], [1, 1]]
-				},
-			]
-		};
+		it('should throw an error if no direction is specified', function () {
+			const ship = player.ships[0];
+			const coordinates = [0, 1];
+			const handler = function () {
+				placeShip(player, ship, coordinates);
+			};
+			expect(handler).to.throw(Error);
+		});
 	});
 });
