@@ -69,3 +69,8 @@ Mocha's representation of a test suite (the describe function) takes two paramet
 * You call arrays that look the same “deeply equal”, because their “deep” internal values are equal
 * The .deep method allows you to make deep equality comparisons
  
+ * Mocha provides useful functions to help us set up conditions for our tests, like creating test objects and simulating the conditions inside our app
+ * The "setup" phase is the part of our tests where we set up conditions for testing
+ * Mocha splits the setup process into two blocks: the stuff we set up before the entire series of tests, and the stuff we set up before each individual test
+ * Mocha provides the hooks before(), after(), beforeEach(), and afterEach() to set up preconditions and clean up after your tests
+ * beforeEach() works like before, only it will run the function before each spec, instead of just once at the start of the suite
