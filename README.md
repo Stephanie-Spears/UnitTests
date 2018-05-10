@@ -63,3 +63,9 @@ Mocha's representation of a test suite (the describe function) takes two paramet
  * A suite will break at first (that's OK), because the function you're referring to may not exist yet
  * The hardest part about BDD is deciding how the function we haven’t written yet might actually work.
  * Even without writing tests, programmers still do a lot of guesswork as they program --- it's rare that you know exactly how every part of a program works at first
+ 
+* Chai's .empty method checks for empty objects, arrays, or strings
+* .empty makes it easy to write expectations without worrying about how the real code will work
+* You call arrays that look the same “deeply equal”, because their “deep” internal values are equal
+* The .deep method allows you to make deep equality comparisons
+ 

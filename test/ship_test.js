@@ -1,5 +1,6 @@
 const expect=require('chai').expect;
-//Mocha's representation of a test suite (the describe function) takes two parameters-->a string describing all tests inside, and a function wrapping them all together
+
+
 describe('checkForShip', function () {
 	const checkForShip = require('../game_logic/ship_methods').checkForShip;
 	it('should correctly report no ship at given players coordinates', function () {
@@ -58,6 +59,22 @@ describe('checkForShip', function () {
 		expect(checkForShip(player, [1, 1])).to.be.true;
 		expect(checkForShip(player, [2, 3])).to.be.true;
 		expect(checkForShip(player, [9, 9])).to.be.false;
+	});
+
+});
+
+
+describe('damageShip', function () {
+	const damageShip = require('../game_logic/ship_methods').damageShip;
+	it('should register damage on a given ship at a given location', function () {
+		let ship = {
+			locations: [[0, 0]],
+			damage: []
+		};
+		damageShip(ship, [0, 0]);
+		expect(ship.damage).to.not.be.empty;
+		expect(ship.damage[0]).to.deep.equal([0,0]);
+
 	});
 
 });
