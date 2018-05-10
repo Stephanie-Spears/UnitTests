@@ -38,3 +38,15 @@ Advantages of writing unit tests:
 Video review
 * To have Mocha and Chai in your project, type `npm install --save-dev mocha chai`
 * The `--save-dev` flag means that these tools are just for development
+
+
+It’s important that the test directory is specifically named "test" (not "tests" or "Test"), and it has to be located at the same level of your project as the package.json file
+With your test directory in place, you simply `run npm test`, and Mocha will automatically run every test in the test directory
+
+- A test suite is a block of unit tests that are all closely related; they test the same function or similar parts of our code base
+- We introduce a test suite in Mocha using describe()
+- Each individual unit test is sometimes called a “spec”
+- Mocha makes it natural to write specs by containing them in a function called it()
+- To use Chai's expect method, import Chai at the top of your file: var expect = require('chai').expect
+
+`expect(false).to.be.ok;` // triggers `AssertionError: expected false to be truthy`
