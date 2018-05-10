@@ -50,3 +50,16 @@ With your test directory in place, you simply `run npm test`, and Mocha will aut
 - To use Chai's expect method, import Chai at the top of your file: var expect = require('chai').expect
 
 `expect(false).to.be.ok;` // triggers `AssertionError: expected false to be truthy`
+
+Mocha's representation of a test suite (the describe function) takes two parameters-->a string describing all tests inside, and a function wrapping them all together
+
+`describe('checkForShip', function () {
+ 	var checkForShip = require('../game_logic/ship_methods').checkForShip;
+ });`
+ 
+ 
+ * Adding “_test” to your test file names makes finding them more easily
+ * Mocha’s representation of a test suite – the describe function – takes two arguments: a string describing all the tests inside, and a function to wrap them all together
+ * A suite will break at first (that's OK), because the function you're referring to may not exist yet
+ * The hardest part about BDD is deciding how the function we haven’t written yet might actually work.
+ * Even without writing tests, programmers still do a lot of guesswork as they program --- it's rare that you know exactly how every part of a program works at first
