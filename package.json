@@ -1,0 +1,22 @@
+{
+  "name": "unittests",
+  "version": "1.0.0",
+  "description": "'unit test tutorial for javascript'",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Stephanie-Spears/UnitTests.git"
+  },
+  "author": "Stephanie Spears",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Stephanie-Spears/UnitTests/issues"
+  },
+  "homepage": "https://github.com/Stephanie-Spears/UnitTests#readme",
+  "devDependencies": {
+    "chai": "^4.1.2"
+  }
+}
