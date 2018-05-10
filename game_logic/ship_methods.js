@@ -7,6 +7,8 @@ function checkForShip(player, coordinates) {
 		})[0];
 		if (!shipPresent){
 			return false;
+		} else{
+			return true;
 		}
 	}
 
