@@ -21,8 +21,7 @@ function validateLocations (player, locations) {
 }
 
 function placeShip (player, ship, startingCoordinates, direction) {
-	if(!direction) throw Error('You left out the directions! I need that for maths!');
-
+	if (!direction) throw Error('You left out the direction! I need that for math!');
 	const proposedLocations = [];
 	let previousLocation,
 		rowNumber,
@@ -47,8 +46,24 @@ function placeShip (player, ship, startingCoordinates, direction) {
 	}
 }
 
+function getRandomCoordinates () {
+	const x = Math.floor(Math.random() * 9);
+	const y = Math.floor(Math.random() * 9);
+	return [x, y];
+}
+
+function getRandomDirection () {
+	return Math.random() > 0.5
+		? 'horizontal'
+		: 'vertical';
+}
+
+
+//fire(player, getRandomCoordinates());
+//placeShip(computerPlayer, computerPlayer.ship[0], getRandomCoordinates(), getRandomDirection());
+
 module.exports = {
 	placeShip: placeShip,
 	validateLocations: validateLocations,
-	validateLocation: validateLocation,
+	validateLocation: validateLocation
 };

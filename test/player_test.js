@@ -18,18 +18,21 @@ describe('PLAYER METHODS', function () {
 		it('shoud confirm valid for unoccupied locations in range', function () {
 			const location = [0, 0];
 			const actual = validateLocation(player, location);
+
 			expect(actual).to.be.ok;
 		});
 
-		it('should confirm INvalid for occupied locations in range', function () {
+		it('shoud confirm INvalid for occupied locations in range', function () {
 			const location = [9, 9];
 			const actual = validateLocation(player, location);
+
 			expect(actual).to.be.false;
 		});
 
 		it('shoud confirm INvalid for UNoccupied locations OUT of range', function () {
 			const locationHigh = [10, 10];
 			const locationLow = [-1, -1];
+
 			expect(validateLocation(player, locationHigh)).to.be.false;
 			expect(validateLocation(player, locationLow)).to.be.false;
 		});
@@ -57,6 +60,7 @@ describe('PLAYER METHODS', function () {
 		it('should correctly report a a problem if any location in the list is invalid', function () {
 			let locations = [[1, 1], [1, 2], [1, 3], [10, 10]];
 			expect(validateLocations(player, locations)).to.be.false;
+
 			locations = [[1, 1], [1, 2], [1, 3], [0, 0]];
 			expect(validateLocations(player, locations)).to.be.false;
 		});
@@ -84,8 +88,10 @@ describe('PLAYER METHODS', function () {
 		it('should update a ship with a valid starting location', function () {
 			const ship = player.ships[0];
 			const coordinates = [0, 1];
+
 			placeShip(player, ship, coordinates, 'horizontal');
 			const actual = ship.locations;
+
 			expect(actual).to.be.ok;
 			expect(actual).to.have.length(1);
 			expect(actual[0]).to.deep.equal([0, 1]);
@@ -94,11 +100,10 @@ describe('PLAYER METHODS', function () {
 		it('should throw an error if no direction is specified', function () {
 			const ship = player.ships[0];
 			const coordinates = [0, 1];
-			const handler = function () {
-				placeShip(player, ship, coordinates);
-			};
+
+			const handler = function () { placeShip(player, ship, coordinates); };
 			expect(handler).to.throw(Error);
-			expect(handler).to.throw('You left out the direction! I need that for the maths!');
+			expect(handler).to.throw('You left out the direction! I need that for math!');
 		});
 	});
 });
